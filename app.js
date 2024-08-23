@@ -33,11 +33,22 @@ let automaticUpgrades = [
 let resource = 0
 let perClick = 1
 let perAuto = 0
+let automaticCollection = false
 
 function collectResource() {
   resource += perClick
   updateResource()
 }
+
+function autoCollect() {
+  if (automaticCollection == true) {
+    resource += perAuto
+    console.log(automaticCollection, perAuto)
+    updateResource()
+  } else return
+}
+
+setInterval(autoCollect, 3000)
 
 function updateResource() {
   let bank = document.getElementById('resourceBank')
@@ -60,6 +71,7 @@ function updateUpgrades() {
   stats.innerHTML = `   
         <section class="row">
             <div class="col-6">
+            <h6>Click Stats</h6>
               <section class="row">
                 <div class="col-2 card">${cSmall.quantity}</div>
                 <div class="col-6">=></div>
@@ -72,6 +84,7 @@ function updateUpgrades() {
               </section>
             </div>
             <div class="col-6">
+            <h6>Automatic Stats</h6>
               <section class="row">
                 <div class="col-2 card">${aSmall.quantity}</div>
                 <div class="col-6">=></div>
@@ -106,6 +119,7 @@ function buyUpgrade(upgradeType, upgradeName) {
       if (resource >= upgrade.price) {
         upgrade.quantity++
         resource -= upgrade.price
+        automaticCollection = true
         console.log('purchased', upgradeName, automaticUpgrades)
       } else console.log('no')
     })
