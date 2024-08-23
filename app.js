@@ -55,7 +55,9 @@ setInterval(autoCollect, 3000)
 
 function updateResource() {
   let bank = document.getElementById('resourceBank')
+  let total = document.getElementById('total')
   bank.innerText = resource
+  total.innerText = resourceOverTime
 }
 updateResource()
 
