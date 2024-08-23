@@ -29,23 +29,45 @@
       <div id="perAuto" class="col">perauto</div>
     </section>
 
-    <section class="row upgrades">
+    <section id="upgrades" class="row upgrades">
       <div class="col-6">upgrades
         <section class="row">
           <div class="col-6">click
-            <button class="btn bg-info">small</button>
-            <button class="btn bg-info">big</button>
+            <button onclick="buyUpgrade('clickUpgrades', 'csmall')" class="btn bg-info">small</button>
+            <button onclick="buyUpgrade('clickUpgrades', 'cbig')" class="btn bg-info">big</button>
           </div>
           <div class="col-6">auto
-            <button class="btn bg-info">small</button>
-            <button class="btn bg-info">big</button>
+            <button onclick="buyUpgrade('automaticUpgrades', 'asmall')" class="btn bg-info">small</button>
+            <button onclick="buyUpgrade('automaticUpgrades', 'abig')" class="btn bg-info">big</button>
           </div>
         </section>
       </div>
-      <div class="col-6">stats
+      <div id="stats" class="col-6">stats
         <section class="row">
-          <div class="col-6">click</div>
-          <div class="col-6">auto</div>
+          <div class="col-6">
+            <section class="row">
+              <div class="col-2 card">0</div>
+              <div class="col-6">=></div>
+              <div class="col-2 card">0</div>
+            </section>
+            <section class="row">
+              <div class="col-2 card">0</div>
+              <div class="col-6">=></div>
+              <div class="col-2 card">0</div>
+            </section>
+          </div>
+          <div class="col-6">
+            <section class="row">
+              <div class="col-2 card">0</div>
+              <div class="col-6">=></div>
+              <div class="col-2 card">0</div>
+            </section>
+            <section class="row">
+              <div class="col-2 card">0</div>
+              <div class="col-6">=></div>
+              <div class="col-2 card">0</div>
+            </section>
+          </div>
         </section>
       </div>
     </section>
