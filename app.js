@@ -31,19 +31,22 @@ let automaticUpgrades = [
 ];
 
 let resource = 0
+let resourceOverTime = 0
 let perClick = 1
 let perAuto = 0
 let automaticCollection = false
 
 function collectResource() {
   resource += perClick
+  resourceOverTime += perClick
   updateResource()
 }
 
 function autoCollect() {
   if (automaticCollection == true) {
     resource += perAuto
-    console.log(automaticCollection, perAuto)
+    resourceOverTime += perAuto
+    // console.log(automaticCollection, perAuto)
     updateResource()
   } else return
 }
@@ -68,36 +71,47 @@ function updateUpgrades() {
 
   click.innerText = perClick
   auto.innerText = perAuto
-  stats.innerHTML = `   
+  stats.innerHTML = `
+    <section class="row">
+      <div class="col-6">
+      <h6>Click Stats</h6>
         <section class="row">
-            <div class="col-6">
-            <h6>Click Stats</h6>
-              <section class="row">
-                <div class="col-2 card">${cSmall.quantity}</div>
-                <div class="col-6">=></div>
-                <div class="col-2 card">${cSmall.quantity * cSmall.bonus}</div>
-              </section>
-              <section class="row">
-                <div class="col-2 card">${cBig.quantity}</div>
-                <div class="col-6">=></div>
-                <div class="col-2 card">${cBig.quantity * cBig.bonus}</div>
-              </section>
-            </div>
-            <div class="col-6">
-            <h6>Automatic Stats</h6>
-              <section class="row">
-                <div class="col-2 card">${aSmall.quantity}</div>
-                <div class="col-6">=></div>
-                <div class="col-2 card">${aSmall.quantity * aSmall.bonus}</div>
-              </section>
-              <section class="row">
-                <div class="col-2 card">${aBig.quantity}</div>
-                <div class="col-6">=></div>
-                <div class="col-2 card">${aBig.quantity * aBig.bonus}</div>
-              </section>
-            </div>
-          </section>`
-  // upgrades.innerhtml = 
+          <div class="col-2 card">${cSmall.quantity}</div>
+          <div class="col-6">=></div>
+          <div class="col-2 card">${cSmall.quantity * cSmall.bonus}</div>
+        </section>
+        <section class="row">
+          <div class="col-2 card">${cBig.quantity}</div>
+          <div class="col-6">=></div>
+          <div class="col-2 card">${cBig.quantity * cBig.bonus}</div>
+        </section>
+      </div>
+      <div class="col-6">
+      <h6>Automatic Stats</h6>
+        <section class="row">
+          <div class="col-2 card">${aSmall.quantity}</div>
+          <div class="col-6">=></div>
+          <div class="col-2 card">${aSmall.quantity * aSmall.bonus}</div>
+        </section>
+        <section class="row">
+          <div class="col-2 card">${aBig.quantity}</div>
+          <div class="col-6">=></div>
+          <div class="col-2 card">${aBig.quantity * aBig.bonus}</div>
+        </section>
+      </div>
+    </section>`
+
+  upgrades.innerHTML = `
+    <div class="col-6">
+      <h6>Click Upgrades</h6>
+      <button onclick="buyUpgrade('clickUpgrades', 'csmall')" class="btn bg-info">${cSmall.price}</button>
+      <button onclick="buyUpgrade('clickUpgrades', 'cbig')" class="btn bg-info">${cBig.price}</button>
+    </div>
+    <div class="col-6">
+      <h6>Automatic Upgrades</h6>
+      <button onclick="buyUpgrade('automaticUpgrades', 'asmall')" class="btn bg-info">${aSmall.price}</button>
+      <button onclick="buyUpgrade('automaticUpgrades', 'abig')" class="btn bg-info">${aBig.price}</button>
+    </div>`
 }
 updateUpgrades()
 
@@ -109,7 +123,8 @@ function buyUpgrade(upgradeType, upgradeName) {
       if (resource >= upgrade.price) {
         upgrade.quantity++
         resource -= upgrade.price
-        console.log('purchased', upgradeName, clickUpgrades)
+        upgrade.price += (upgrade.price * 1 + 1)
+        // console.log('purchased', upgradeName, clickUpgrades)
 
       } else console.log('no')
     })
@@ -119,8 +134,9 @@ function buyUpgrade(upgradeType, upgradeName) {
       if (resource >= upgrade.price) {
         upgrade.quantity++
         resource -= upgrade.price
+        upgrade.price += (upgrade.price * 1 + 3)
         automaticCollection = true
-        console.log('purchased', upgradeName, automaticUpgrades)
+        // console.log('purchased', upgradeName, automaticUpgrades)
       } else console.log('no')
     })
   }
@@ -130,16 +146,18 @@ function buyUpgrade(upgradeType, upgradeName) {
 }
 
 function collectRate() {
-  clickRate = 1
-  autoRate = 0
-  for (let i = 0; i < clickUpgrades.length; i++) {
-    let click = clickUpgrades[i];
-    clickRate += (click.bonus * click.quantity)
-  }
-  for (let i = 0; i < automaticUpgrades.length; i++) {
-    let auto = automaticUpgrades[i];
-    autoRate += (auto.bonus * auto.quantity)
-  }
+  let clickRate = 1
+  let autoRate = 0
+  // for (let i = 0; i < clickUpgrades.length; i++) {
+  //   let click = clickUpgrades[i];
+  //   clickRate += (click.bonus * click.quantity)
+  // }
+  clickUpgrades.forEach(click => clickRate += click.bonus * click.quantity)
+  // for (let i = 0; i < automaticUpgrades.length; i++) {
+  //   let auto = automaticUpgrades[i];
+  //   autoRate += (auto.bonus * auto.quantity)
+  // }
+  automaticUpgrades.forEach(auto => autoRate += auto.bonus * auto.quantity)
   console.log(clickRate, autoRate)
   perClick = clickRate
   perAuto = autoRate
