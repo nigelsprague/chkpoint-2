@@ -148,15 +148,7 @@ function buyUpgrade(upgradeType, upgradeName) {
 function collectRate() {
   let clickRate = 1
   let autoRate = 0
-  // for (let i = 0; i < clickUpgrades.length; i++) {
-  //   let click = clickUpgrades[i];
-  //   clickRate += (click.bonus * click.quantity)
-  // }
   clickUpgrades.forEach(click => clickRate += click.bonus * click.quantity)
-  // for (let i = 0; i < automaticUpgrades.length; i++) {
-  //   let auto = automaticUpgrades[i];
-  //   autoRate += (auto.bonus * auto.quantity)
-  // }
   automaticUpgrades.forEach(auto => autoRate += auto.bonus * auto.quantity)
   console.log(clickRate, autoRate)
   perClick = clickRate
