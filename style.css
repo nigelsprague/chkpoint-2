@@ -1,0 +1,8 @@
+main {
+  color: whitesmoke;
+}
+
+.info,
+.upgrades {
+  border: 1px solid whitesmoke;
+}
