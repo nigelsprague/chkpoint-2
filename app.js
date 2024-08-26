@@ -120,11 +120,11 @@ function updateUpgrades() {
             <h6 class="bungee-regular text-center">Automatic Upgrades</h6>
             <section class="row my-3">
               <button onclick="buyUpgrade('automaticUpgrades', 'asmall')" class="col-4 bungee-regular btn">$${aSmall.price}</button>
-              <span class="col pe-0">Criterion Subscription +100 / 3s</span>
+              <span class="col pe-0">Criterion Subscription +10 / 3s</span>
             </section>
             <section class="row mb-3">
               <button onclick="buyUpgrade('automaticUpgrades', 'abig')" class="col-4 bungee-regular btn">$${aBig.price}</button>
-              <span class="col pe-0">Criterion Closet +1000 / 3s</span>
+              <span class="col pe-0">Criterion Closet +100 / 3s</span>
             </section>
           </div>
         </section>
