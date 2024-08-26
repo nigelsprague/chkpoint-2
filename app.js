@@ -78,27 +78,27 @@ function updateUpgrades() {
           <div class="col-5 me-3">
             <h6 class="bungee-regular text-center">Click Stats</h6>
             <section class="row justify-content-between my-3">
-              <div class="col-3 px-1 border bungee-regular">${cSmall.quantity}</div>
+              <div class="col-3 px-1 py-2 border bungee-regular">${cSmall.quantity}</div>
               <div class="col-6 px-2">Dbl Feature =></div>
-              <div class="col-3 border px-1 bungee-regular">${cSmall.quantity * cSmall.bonus}</div>
+              <div class="col-3 border px-1 py-2 bungee-regular">${cSmall.quantity * cSmall.bonus}</div>
             </section>
             <section class="row justify-content-between">
-              <div class="col-3 px-1 border bungee-regular">${cBig.quantity}</div>
+              <div class="col-3 px-1 py-2 border bungee-regular">${cBig.quantity}</div>
               <div class="col-6 px-2">Box Set =></div>
-              <div class="col-3 px-1 border bungee-regular">${cBig.quantity * cBig.bonus}</div>
+              <div class="col-3 px-1 py-2 border bungee-regular">${cBig.quantity * cBig.bonus}</div>
             </section>
           </div>
           <div class="col-6">
             <h6 class="bungee-regular text-center">Automatic Stats</h6>
             <section class="row justify-content-between my-3">
-              <div class="col-3 px-1 border bungee-regular">${aSmall.quantity}</div>
+              <div class="col-3 px-1 py-2 border bungee-regular">${aSmall.quantity}</div>
               <div class="col-6 px-2">Subscription =></div>
-              <div class="col-3 px-1 border bungee-regular">${aSmall.quantity * aSmall.bonus}</div>
+              <div class="col-3 px-1 py-2 border bungee-regular">${aSmall.quantity * aSmall.bonus}</div>
             </section>
             <section class="row justify-content-between">
-              <div class="col-3 px-1 border bungee-regular">${aBig.quantity}</div>
+              <div class="col-3 px-1 py-2 border bungee-regular">${aBig.quantity}</div>
               <div class="col-6 px-2">Closet =></div>
-              <div class="col-3 px-1 border bungee-regular">${aBig.quantity * aBig.bonus}</div>
+              <div class="col-3 px-1 py-2 border bungee-regular">${aBig.quantity * aBig.bonus}</div>
             </section>
           </div>
         </section>`
