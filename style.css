@@ -1,8 +1,87 @@
+:root {
+  --card-color1: #989898;
+  --card-color2: #707070;
+}
+
 main {
-  color: whitesmoke;
+  color: rgb(255, 255, 255);
+  min-height: 100vh;
+}
+
+body {
+  background-image: url(imgs/closet.png);
+  background-position: center;
+  background-size: cover;
 }
 
 .info,
 .upgrades {
   border: 1px solid whitesmoke;
+}
+
+img {
+  cursor: grab;
+}
+
+img:active {
+  cursor: grabbing;
+}
+
+.bungee-regular {
+  font-family: "Bungee", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+h2 {
+  margin: unset;
+}
+
+.click-card {
+  background-color: #858585;
+  border-top-left-radius: 10px;
+}
+
+.auto-card {
+  background-color: #858585;
+  border-top-right-radius: 10px;
+}
+
+.resource-card {
+  background-color: var(--card-color1);
+  filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.537));
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.text-shadow {
+  filter: drop-shadow(0 3px 3px black);
+}
+
+.upgrade-card {
+  background-color: var(--card-color1);
+  filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.537));
+  border-radius: 10px;
+}
+
+.btn {
+  background-color: var(--card-color1);
+  text-justify: center;
+  padding: .5em;
+  border-radius: 10px;
+}
+
+.border {
+  border-radius: 10px;
+  align-content: center;
+}
+
+#upgrades,
+#stats {
+  background-color: var(--card-color2);
+  border-radius: 10px;
+}
+
+#total {
+  color: rgba(255, 255, 255, 0.8);
 }

@@ -7,70 +7,102 @@
   <title>Checkpoint 2</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body class="bg-dark">
-  <main class="container">
+  <main class="container-fluid align-content-center p-5">
 
-    <section class="row">
-      <h1>Resource Collector Title</h1>
+    <section class="row text-center bungee-regular text-shadow">
+      <h1>Criterion Collector</h1>
+      <span id="total" class="col text-end py-1"></span>
     </section>
 
-    <section class="row">
-      <div class="col">
-        <button onclick="collectResource()" class="btn bg-success">click me for resource</button>
+    <section class="row justify-content-center bungee-regular text-shadow">
+      <img onclick="collectResource()" class="col-3 mt-4 mb-5"
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/The_Criterion_Collection_Logo.svg/768px-The_Criterion_Collection_Logo.svg.png"
+        alt="Criterion Collection Logo">
+    </section>
+
+    <section class="row resource-panel justify-content-center bungee-regular">
+      <div class="col-2 align-content-end">
+        <section class="row click-card">
+          <h6 id="perClick" class="col align-self-end">perclick</h6>
+          <i class="mdi mdi-cursor-pointer col fs-3 text-end"></i>
+        </section>
       </div>
-      <div id="total" class="col"></div>
+      <div class="col-5 resource-card">
+        <section class="row my-2">
+          <i class="col mdi mdi-movie-roll align-self-center fs-2"></i>
+          <h2 id="resourceBank" class="col-9 align-self-center text-end"></h2>
+        </section>
+      </div>
+      <div class="col-2 align-content-end">
+        <section class="row auto-card">
+          <i class="mdi mdi-timer-outline col-3 fs-3"></i>
+          <h6 id="perAuto" class="col align-self-end text-end">perauto</h6>
+        </section>
+      </div>
     </section>
 
-    <section class="row resource">
-      <div id="perClick" class="col">perclick</div>
-      <div id="resourceBank" class="col">resource bank</div>
-      <div id="perAuto" class="col">perauto</div>
-    </section>
-
-    <section class="row upgrades">
-      <div class="col-6">
-        <section id="upgrades" class="row">
+    <section class="row upgrade-card justify-content-between p-3">
+      <div class="col me-2">
+        <section id="upgrades" class="row p-2">
           <div class="col-6">
-            <h6>Click Upgrades</h6>
-            <button onclick="buyUpgrade('clickUpgrades', 'csmall')" class="btn bg-info">small</button>
-            <button onclick="buyUpgrade('clickUpgrades', 'cbig')" class="btn bg-info">big</button>
+            <h6 class="bungee-regular text-center">Click Upgrades</h6>
+            <section class="row">
+              <button onclick="buyUpgrade('clickUpgrades', 'csmall')" class="col-6 bungee-regular btn"></button><span
+                class="col-6 pe-0">Double Feature +1</span>
+            </section>
+            <section class="row">
+              <button onclick="buyUpgrade('clickUpgrades', 'cbig')" class="col-6 bungee-regular btn"></button><span
+                class="col-6 pe-0">Director's
+                Box-Set +5</span>
+            </section>
           </div>
           <div class="col-6">
-            <h6>Automatic Upgrades</h6>
-            <button onclick="buyUpgrade('automaticUpgrades', 'asmall')" class="btn bg-info">small</button>
-            <button onclick="buyUpgrade('automaticUpgrades', 'abig')" class="btn bg-info">big</button>
+            <h6 class="bungee-regular text-center">Automatic Upgrades</h6>
+            <section class="row">
+              <button onclick="buyUpgrade('automaticUpgrades', 'asmall')" class="col-6 bungee-regular btn"></button>
+              <span class="col-6 pe-0">Criterion Subscription +100 / 3s</span>
+            </section>
+            <section class="row">
+              <button onclick="buyUpgrade('automaticUpgrades', 'abig')" class="col-6 bungee-regular btn"></button>
+              <span class="col-6 pe-0">Criterion Closet +1000 / 3s</span>
+            </section>
           </div>
         </section>
       </div>
-      <div id="stats" class="col-6">
-        <section class="row">
-          <div class="col-6">
-            <h6>Click Stats</h6>
-            <section class="row">
-              <div class="col-2 card">0</div>
-              <div class="col-6">=></div>
-              <div class="col-2 card">0</div>
+      <div id="stats" class="col stat-card ms-2">
+        <section class="row text-center justify-content-between p-2">
+          <div class="col-5 me-3">
+            <h6 class="bungee-regular text-center">Click Stats</h6>
+            <section class="row justify-content-between my-3">
+              <div class="col-3 px-1 border bungee-regular">${cSmall.quantity}</div>
+              <div class="col-6 px-2">Dbl Feature =></div>
+              <div class="col-3 border px-1 bungee-regular">${cSmall.quantity * cSmall.bonus}</div>
             </section>
-            <section class="row">
-              <div class="col-2 card">0</div>
-              <div class="col-6">=></div>
-              <div class="col-2 card">0</div>
+            <section class="row justify-content-between">
+              <div class="col-3 px-1 border bungee-regular">${cBig.quantity}</div>
+              <div class="col-6 px-2">Box Set =></div>
+              <div class="col-3 px-1 border bungee-regular">${cBig.quantity * cBig.bonus}</div>
             </section>
           </div>
           <div class="col-6">
-            <h6>Automatic Stats</h6>
-            <section class="row">
-              <div class="col-2 card">0</div>
-              <div class="col-6">=></div>
-              <div class="col-2 card">0</div>
+            <h6 class="bungee-regular text-center">Automatic Stats</h6>
+            <section class="row justify-content-between my-3">
+              <div class="col-3 px-1 border bungee-regular">${aSmall.quantity}</div>
+              <div class="col-6 px-2">Subscription =></div>
+              <div class="col-3 px-1 border bungee-regular">${aSmall.quantity * aSmall.bonus}</div>
             </section>
-            <section class="row">
-              <div class="col-2 card">0</div>
-              <div class="col-6">=></div>
-              <div class="col-2 card">0</div>
+            <section class="row justify-content-between">
+              <div class="col-3 px-1 border bungee-regular">${aBig.quantity}</div>
+              <div class="col-6 px-2">Closet =></div>
+              <div class="col-3 px-1 border bungee-regular">${aBig.quantity * aBig.bonus}</div>
             </section>
           </div>
         </section>
